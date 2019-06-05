@@ -1,12 +1,17 @@
 import React from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import LoginSignup from '../pages/LoginSignup';
 
 export default function App() {
   return (
-    <h1>Track 2020, baby!</h1>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={LoginSignup} />   
+      </Switch> 
+    </Router>
   );
 }
