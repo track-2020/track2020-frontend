@@ -11,8 +11,9 @@ export default function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/signup/issues" component={Issues} />
+        <Route path="/signup" component={Signup} />  
         <Route exact path="/" component={Login} />
-        <Route path="/signup" component={Signup} />   
       </Switch> 
     </Router>
   );

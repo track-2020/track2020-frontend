@@ -14,11 +14,6 @@ export default class SignUpForm extends PureComponent {
       issues: []
     }
 
-    componentDidMount() {
-      const { username, password, email, issues } = this.state;
-      this.props.onSubmit(username, password, email, issues);
-    }
-
     handleSubmit = event => {
       event.preventDefault();
       const { username, password, email, issues } = this.state;
@@ -38,7 +33,7 @@ export default class SignUpForm extends PureComponent {
             <input type="text" name="username" placeholder="Username" onChange={this.handleChange}></input>
             <input type="text" name="password" placeholder="Password" onChange={this.handleChange}></input>
             <input type="text" name="email" placeholder="Email Address" onChange={this.handleChange}></input>
-            <button>Sign-Up</button>
+            <Link to="/signup/issues"><button>Sign-Up</button></Link>
           </form>
           <h3>Already have an account? Return to login:</h3>
           <Link to="/" ><button>Login</button></Link>

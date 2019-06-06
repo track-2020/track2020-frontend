@@ -12,10 +12,6 @@ export default class LoginForm extends PureComponent {
       password: ''
     }
 
-    componentDidMount() {
-      const { username, password } = this.state;
-      this.props.onLogin(username, password);
-    }
 
     handleLogin = event => {
       event.preventDefault();

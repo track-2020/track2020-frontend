@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 function Cause({ image, name }) {
   return (
     <section className="cause">
-      <h3></h3>
+      <h3>{name}</h3>
+      <img src={image} />
     </section>
   );
 }
 
-Cause.propType = {
+Cause.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
