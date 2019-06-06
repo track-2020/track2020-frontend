@@ -21,19 +21,20 @@ export default class IssuesForm extends PureComponent {
     }
 
     handleChange = ({ target }) => {
-      console.log('change name', target.name);
       const { issues } = this.state;
       const indexOfIssue = issues.findIndex(element => element === target.name);
- 
-        if(target.checked === true) {
-          console.log('change event clicked true');
-          this.setState({
-            issues: [...issues, target.name]
-          });
-          console.log(issues);
-        } else if(target.checked === false) {
-          issues.splice(indexOfIssue, 1);
-        }
+      if(issues.length === 5) {
+        alert('Sorry, you can only select five issues. Please deselect one to add this to your list');
+        target.checked === false;
+        return;
+      }
+      if(target.checked === true) {
+        this.setState({
+          issues: [...issues, target.name]
+        });
+      } else if(target.checked === false) {
+        issues.splice(indexOfIssue, 1);
+      }
 
     }
 
