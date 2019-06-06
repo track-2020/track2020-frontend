@@ -14,12 +14,15 @@ export default class SignUpForm extends PureComponent {
       issues: []
     }
 
+    componentDidMount() {
+      const { username, password, email, issues } = this.state;
+      this.props.onSubmit(username, password, email, issues);
+    }
+
     handleSubmit = event => {
       event.preventDefault();
       const { username, password, email, issues } = this.state;
       this.props.onSubmit(username, password, email, issues);
-      console.log('sign up state', this.state);
-      console.log('sign up props', this.props);
       this.setState({ username: '', password: '', email: '', issues: [] });
     }
 
