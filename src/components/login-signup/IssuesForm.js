@@ -21,20 +21,48 @@ export default class IssuesForm extends PureComponent {
       return (
             <>
                 <form onSubmit={this.handleSubmit}>
-                  {/* <input type="checkbox" id="lgbt" name="lgbt">LGBT</input>  */}
-                  {/* <input type="checkbox" id="climate" name="climate">Climate Change</input>
-                  <input type="checkbox" id="economy" name="economy">Economy</input>
-                  <input type="checkbox" id="reproductive-health" name="reproductive-health">Reproductive Health</input>
-                  <input type="checkbox" id="immigration" name="immigration">Immigration</input>
-                  <input type="checkbox" id="foreign-policy" name="foreign-policy">Foreign Policy</input>
-                  <input type="checkbox" id="healthcare" name="healthcare">Healthcare</input>
-                  <input type="checkbox" id="gun-violence" name="gun-violence">Gun Violence</input>
-                  <input type="checkbox" id="criminal-justice" name="criminal-justice">Criminal Justice Reform</input>
-                  <input type="checkbox" id="voting" name="voting">Voting Rights</input>
-                  <input type="checkbox" id="tax" name="tax">Tax Fairness</input>
-                  <input type="checkbox" id="gender-equality" name="gender-equality">Gender Equality</input>
-                  <input type="checkbox" id="education" name="education">Education</input>
-                  <input type="checkbox" id="racial-justice" name="racial-justice">Racial Justice</input> */}
+                  <input type="checkbox" id="lgbt" name="lgbt" /> 
+                  <label htmlFor="lgbt">LGBTQIA+</label>
+
+                  <input type="checkbox" id="climate" name="climate" /> 
+                  <label htmlFor="climate">Climate Change</label>
+
+                  <input type="checkbox" id="economy" name="economy" /> 
+                  <label htmlFor="economy">Economy</label>
+
+                  <input type="checkbox" id="reproductive-health" name="reproductive-health" /> 
+                  <label htmlFor="reproductive-health">Reproductive Health</label>
+
+                  <input type="checkbox" id="immigration" name="immigration" /> 
+                  <label htmlFor="immigration">Immigration</label>
+
+                  <input type="checkbox" id="foreign-policy" name="foreign-policy" /> 
+                  <label htmlFor="foreign-policy">Foreign Policy</label>
+
+                  <input type="checkbox" id="healthcare" name="healthcare" /> 
+                  <label htmlFor="healthcare">Healthcare</label>
+
+                  <input type="checkbox" id="gun-violence" name="gun-violence" /> 
+                  <label htmlFor="gun-violence">Gun Violence</label>
+
+                  <input type="checkbox" id="criminal-justice-reform" name="criminal-justice-reform" /> 
+                  <label htmlFor="criminal-justice-reform">Criminal Justice Reform</label>
+
+                  <input type="checkbox" id="voting" name="voting" /> 
+                  <label htmlFor="voting">Voting Rights</label>
+
+                  <input type="checkbox" id="tax" name="tax" /> 
+                  <label htmlFor="tax">Tax Fairness</label>
+
+                  <input type="checkbox" id="gender" name="gender" /> 
+                  <label htmlFor="gender">Gender Equality</label>
+
+                  <input type="checkbox" id="education" name="education" /> 
+                  <label htmlFor="education">Education</label>
+                  
+                  <input type="checkbox" id="racial-justice" name="racial-justice" /> 
+                  <label htmlFor="racial-justice">Racial Justice</label>
+
                   <button>Continue</button>
                 </form>
             </>
