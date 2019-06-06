@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default class SignUpForm extends PureComponent {
     static propTypes = {
-      onSubmit: PropTypes.func.isRequired
+      onClick: PropTypes.func.isRequired
     }
 
     state = {
@@ -14,10 +14,10 @@ export default class SignUpForm extends PureComponent {
       issues: []
     }
 
-    handleSubmit = event => {
+    handleClick = event => {
       event.preventDefault();
       const { username, password, email, issues } = this.state;
-      this.props.onSubmit(username, password, email, issues);
+      this.props.onClick(username, password, email, issues);
       this.setState({ username: '', password: '', email: '', issues: [] });
     }
 
@@ -29,11 +29,11 @@ export default class SignUpForm extends PureComponent {
     render() {
       return (
         <>
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <input type="text" name="username" placeholder="Username" onChange={this.handleChange}></input>
             <input type="text" name="password" placeholder="Password" onChange={this.handleChange}></input>
             <input type="text" name="email" placeholder="Email Address" onChange={this.handleChange}></input>
-            <Link to="/signup/issues"><button>Sign-Up</button></Link>
+            <button onClick={this.handleClick}><Link to="/signup/issues">Sign-Up</Link></button>
           </form>
           <h3>Already have an account? Return to login:</h3>
           <Link to="/" ><button>Login</button></Link>

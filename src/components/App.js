@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
+import Issues from '../pages/Issues';
 
 export default function App() {
   return (
