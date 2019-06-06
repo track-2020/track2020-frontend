@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-export default class SignUpForm extends PureComponent {
+class SignUpForm extends PureComponent {
     static propTypes = {
-      onClick: PropTypes.func.isRequired
+      onClick: PropTypes.func.isRequired,
+      history: PropTypes.object.isRequired
     }
 
     state = {
@@ -19,6 +20,7 @@ export default class SignUpForm extends PureComponent {
       const { username, password, email, issues } = this.state;
       this.props.onClick(username, password, email, issues);
       this.setState({ username: '', password: '', email: '', issues: [] });
+      this.props.history.push('/signup/issues');
     }
 
     handleChange = ({ target }) => {
@@ -32,7 +34,7 @@ export default class SignUpForm extends PureComponent {
             <input type="text" name="username" placeholder="Username" onChange={this.handleChange}></input>
             <input type="text" name="password" placeholder="Password" onChange={this.handleChange}></input>
             <input type="text" name="email" placeholder="Email Address" onChange={this.handleChange}></input>
-            <button onClick={this.handleClick}><Link to="/signup/issues">Sign-Up</Link></button>
+            <button onClick={this.handleClick}>Sign-Up</button>
           </form>
           <h3>Already have an account? Return to login:</h3>
           <Link to="/" ><button>Login</button></Link>
@@ -40,3 +42,5 @@ export default class SignUpForm extends PureComponent {
       );
     }
 }
+
+export default withRouter(SignUpForm);

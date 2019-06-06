@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default class IssuesForm extends PureComponent {
+class IssuesForm extends PureComponent {
     static propTypes = {
-      onSubmit: PropTypes.func.isRequired
+      onSubmit: PropTypes.func.isRequired,
+      history: PropTypes.object.isRequired
     }
     
     state = {
@@ -20,6 +21,7 @@ export default class IssuesForm extends PureComponent {
         issues: [],
         disabled: true
       });
+      this.props.history.push('/dashboard');
     }
 
     handleChange = ({ target }) => {
@@ -96,6 +98,6 @@ export default class IssuesForm extends PureComponent {
             </>
       );
     }
-
-
 }
+
+export default withRouter(IssuesForm);
