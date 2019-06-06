@@ -8,7 +8,8 @@ export default class IssuesForm extends PureComponent {
     }
     
     state = {
-      issues: []
+      issues: [],
+      disabled: true
     }
 
     handleSubmit = event => {
@@ -16,16 +17,21 @@ export default class IssuesForm extends PureComponent {
       const { issues } = this.state;
       this.props.onSubmit(issues);
       this.setState({
-        issues: []
+        issues: [],
+        disabled: true
       });
     }
 
     handleChange = ({ target }) => {
       const { issues } = this.state;
       const indexOfIssue = issues.findIndex(element => element === target.name);
+      if(issues.length === 4) {
+        this.setState({
+          disabled: false
+        });
+      }
       if(issues.length === 5) {
         alert('Sorry, you can only select five issues. Please deselect one to add this to your list');
-        target.checked === false;
         return;
       }
       if(target.checked === true) {
@@ -85,7 +91,7 @@ export default class IssuesForm extends PureComponent {
                   <input type="checkbox" id="racial-justice" name="racial-justice" onChange={this.handleChange} /> 
                   <label htmlFor="racial-justice">Racial Justice</label>
 
-                  <button>Continue</button>
+                  <button disabled={this.state.disabled}>Continue</button>
                 </form>
             </>
       );
