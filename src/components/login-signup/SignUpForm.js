@@ -23,7 +23,6 @@ export default class SignUpForm extends PureComponent {
 
     handleChange = ({ target }) => {
       this.setState({ [target.name]: target.value });
-      console.log('change', this.state);
     }
 
     render() {
