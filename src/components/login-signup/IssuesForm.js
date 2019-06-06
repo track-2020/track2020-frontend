@@ -19,15 +19,15 @@ export default class IssuesForm extends PureComponent {
 
     handleChange = ({ target }) => {
       console.log('change name', target.name);
-      const checkIndexOfIssue = this.state.issues.includes(target.name);
-      if(checkIndexOfIssue) {
-        console.log('that choice is already in the array');
-      }
-      else if(target.checked === true) {
+      // const checkIssue = this.state.issues.includes(target.name);
+      const indexOfIssue = this.state.issues.findIndex(element => element === target.name);
+      if(target.checked === true) {
         console.log('change event clicked true');
         this.setState({
           issues: [...this.state.issues, target.name]
         });
+      } else if(target.checked === false) {
+        this.state.issues.splice(indexOfIssue, 1);
       }
       console.log(this.state.issues);
 
