@@ -8,11 +8,13 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Issues from '../pages/Issues';
 import Dashboard from '../pages/Dashboard';
+import Tracking from '../pages/Tracking';
 
 export default function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/track" component={Tracking} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/signup/issues" component={Issues} />
         <Route path="/signup" component={Signup} />  
