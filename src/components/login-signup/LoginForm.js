@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class LoginForm extends PureComponent {
     static propTypes = {
-      onSubmit: PropTypes.func.isRequired
+      onLogin: PropTypes.func.isRequired
     }
 
     state = {
@@ -11,11 +12,10 @@ export default class LoginForm extends PureComponent {
       password: ''
     }
 
-    handleSubmit = event => {
+    handleLogin = event => {
       event.preventDefault();
-      console.log('event', event.target);
       const { username, password } = this.state;
-      this.props.onSubmit(username, password);
+      this.props.onLogin(username, password);
       this.setState({ username: '', password: '' });
     }
 
@@ -25,12 +25,15 @@ export default class LoginForm extends PureComponent {
 
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="username" placeholder="Username" onChange={this.handleChange}></input>
-          <input type="text" name="password" placeholder="Password" onChange={this.handleChange}></input>
-          <button value="login">Login</button>
-          <button value="signup">Sign-Up</button>
-        </form>
+        <>
+          <form>
+            <input type="text" name="username" placeholder="Username" onChange={this.handleChange}></input>
+            <input type="text" name="password" placeholder="Password" onChange={this.handleChange}></input>
+            <button onClick={this.handleLogin}>Login</button>
+          </form>
+          <h3>New to Track 2020? Sign up to begin!</h3>
+          <Link to="/signup" ><button>Sign-Up</button></Link>
+        </>
       );
     }
 }
