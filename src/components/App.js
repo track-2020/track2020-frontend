@@ -4,13 +4,13 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import LoginSignup from '../pages/LoginSignup';
+import Login from '../pages/Login';
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={LoginSignup} />   
+        <Route exact path="/" component={Login} />   
       </Switch> 
     </Router>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
-import AuthForm from '../components/login-signup/AuthForm';
+import Login from '../containers/auth/Login';
 
 export default function LoginSignup() {
   return (
       <>
           <h1>Track 2020, baby!</h1>
-          <AuthForm />
+          <Login />
       </>
   );
 }
