@@ -13,23 +13,27 @@ export default class IssuesForm extends PureComponent {
 
     handleSubmit = event => {
       event.preventDefault();
-      console.log('submit button clicked');
-
+      const { issues } = this.state;
+      this.props.onSubmit(issues);
+      this.setState({
+        issues: []
+      });
     }
 
     handleChange = ({ target }) => {
       console.log('change name', target.name);
-      // const checkIssue = this.state.issues.includes(target.name);
-      const indexOfIssue = this.state.issues.findIndex(element => element === target.name);
-      if(target.checked === true) {
-        console.log('change event clicked true');
-        this.setState({
-          issues: [...this.state.issues, target.name]
-        });
-      } else if(target.checked === false) {
-        this.state.issues.splice(indexOfIssue, 1);
-      }
-      console.log(this.state.issues);
+      const { issues } = this.state;
+      const indexOfIssue = issues.findIndex(element => element === target.name);
+ 
+        if(target.checked === true) {
+          console.log('change event clicked true');
+          this.setState({
+            issues: [...issues, target.name]
+          });
+          console.log(issues);
+        } else if(target.checked === false) {
+          issues.splice(indexOfIssue, 1);
+        }
 
     }
 
