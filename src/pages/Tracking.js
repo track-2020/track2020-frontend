@@ -8,7 +8,8 @@ export default class Tracking extends PureComponent {
   //   }
 
     state = {
-      show: false
+      show: false,
+      score: 0
     }
 
     showModal = () => {
@@ -25,8 +26,14 @@ export default class Tracking extends PureComponent {
       });
     }
 
-    handlePlusClick = () => {
+    handlePlusClick = (prevState) => {
       console.log('plus button clicked');
+      console.log(this.state.score);
+      const stateScore = this.state.score;
+      this.setState({
+        score: stateScore + 1
+      });
+      console.log(this.state);
     }
     
 
