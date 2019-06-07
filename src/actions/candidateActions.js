@@ -1,6 +1,10 @@
-export const CREATE_CANDIDATE = 'CREATE_CANDIDATE';
+import { getCandidates } from '../services/track2020Api';
+import { createAction } from 'promise-middleware-redux';
 
-export const createCandidate = (name, image, totalScore, issueScores, description) => ({
-  type: CREATE_CANDIDATE,
-  payload: { name, image, totalScore, issueScores, description }
-});
+export const [
+  fetchCandidates,
+  FETCH_CANDIDATES,
+  FETCH_CANDIDATES_LOADING,
+  _,
+  FETCH_POKEMON_ERROR
+] = createAction('FETCH_CANDIDATES', getCandidates);
