@@ -3,9 +3,9 @@ import CandidateModal from '../components/modals/CandidateModal';
 // import PropTypes from 'prop-types';
 
 export default class Tracking extends PureComponent {
-  // static propTypes = {
-  //   candidates: PropTypes.array.isRequired
-  // }
+//   static propTypes = {
+
+  //   }
 
     state = {
       show: false
@@ -25,12 +25,17 @@ export default class Tracking extends PureComponent {
       });
     }
 
+    handlePlusClick = () => {
+      console.log('plus button clicked');
+    }
+    
+
     render() {
       return (
             <>
                 <h1>Candidates</h1>
                 <img src="https://miro.medium.com/fit/c/256/256/1*otydHRTFB1BbHZ4Xu4dLQA.png" onClick={this.showModal} />
-                <CandidateModal show={this.state.show} close={this.hideModal}>
+                <CandidateModal show={this.state.show} close={this.hideModal} plusClick={this.handlePlusClick}>
                   <p>Testing this thang</p>
                 </CandidateModal>
                 {/* <p onClick={this.hideModal}>Close Modal</p> */}
