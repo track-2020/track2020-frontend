@@ -1,5 +1,5 @@
-export const getCandidates = userId => {
-  return fetch(`https://alchemy-pokedex.herokuapp.com/api/pokedex/${userId}`)
+export const getCandidates = () => {
+  return fetch('ec2-13-58-71-42.us-east-2.compute.amazonaws.com/api/v1/candidatesByUsers')
     .then(res => ([res.ok, res.json()]))
     .then(([ok, json]) => {
       if(!ok) throw 'Sorry, having trouble getting your candidates.';

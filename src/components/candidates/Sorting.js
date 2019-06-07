@@ -27,7 +27,7 @@ Sorting.propTypes = {
   issue3: PropTypes.string.isRequired,
   issue4: PropTypes.string.isRequired,
   issue5: PropTypes.string.isRequired,
-  totalScore
+  totalScore: PropTypes.number.isRequired
 };
 
 export default Sorting;

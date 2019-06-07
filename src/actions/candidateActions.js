@@ -6,5 +6,5 @@ export const [
   FETCH_CANDIDATES,
   FETCH_CANDIDATES_LOADING,
   _,
-  FETCH_POKEMON_ERROR
+  FETCH_CANDIDATES_ERROR
 ] = createAction('FETCH_CANDIDATES', getCandidates);
