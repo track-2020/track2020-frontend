@@ -26,7 +26,7 @@ export default class Tracking extends PureComponent {
       });
     }
 
-    handlePlusClick = (prevState) => {
+    handlePlusClick = () => {
       console.log('plus button clicked');
       console.log(this.state.score);
       const stateScore = this.state.score;
