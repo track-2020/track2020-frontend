@@ -4,8 +4,8 @@ import Candidate from './Candidate';
 import Loading from '../loading/Loading';
 import { connect } from 'react-redux';
 import { fetchCandidates } from '../../actions/candidateActions';
-import { getCandidates, sortByIssueScore } from '../../selectors/candidate-selectors';
-import Sorting from './Sorting';
+import { getCandidates, getCandidatesLoading, getCandidatesError, sortByTotalScore, sortByIssueScore } from '../../selectors/candidate-selectors';
+import SortByIssueButtons from '../SortByIssueButtons';
 
 class Candidates extends PureComponent {
   static propTypes = {
@@ -40,59 +40,58 @@ class Candidates extends PureComponent {
     loading: PropTypes.bool.isRequired,
     error: PropTypes.string,
     userId: PropTypes.number.isRequired,
-    issues: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+    issues: PropTypes.arrayOf(PropTypes.shape({
+      issue: PropTypes.string.isRequired,
+      issueId: PropTypes.number.isRequired
+    })).isRequired
   }
 
   fetchCandidates = (userId) => {
     this.props.fetch(userId);
   }
 
-  componentDidMount() {
-    this.fetchCandidates(this.props.userId);
-  }
-
-  handleSortByIssue1 = () => {
-    console.log('sorting by issue 1');
-  }
-
-
-  handleSortByIssue2 = () => {
-    console.log('sorting by issue 2');
-  }
-
-
-  handleSortByIssue3 = () => {
-    console.log('sorting by issue 3');
-  }
-
-
-  handleSortByIssue4 = () => {
-    console.log('sorting by issue 4');
-  }
-
-
-  handleSortByIssue5 = () => {
-    console.log('sorting by issue 5');
-  }
-
-
-  handleSortByTotalScore = () => {
-    console.log('sorting by total score');
-  }
-
-  render() {
-    const { candidates, loading, error, issues } = this.props;
-    const sortedCandidates = sortByTotalScore(candidates);
-    const candidateList = sortedCandidates.map(candidate => {
+  renderCandidateList() {
+    const candidateList = this.props.candidates.map(candidate => {
       return <li key={candidate._id}>
         <Candidate image={candidate.image} name={candidate.name} score={candidate.score} bio={candidate.bio} />
       </li>;
     });
+    return candidateList;
+  }
+
+  componentDidMount() {
+    this.fetchCandidates(this.props.userId);
+  }
+
+  handleCandidateSortByTotal() {
+    const totalSortedCandidates = sortByTotalScore(this.props.candidates);
+    this.setState({
+      candidates: totalSortedCandidates
+    });
+  }
+
+  handleCandidateSortByIssue = (issueId) => {
+    const issueSortedArray = sortByIssueScore(this.props.candidates, issueId);
+    this.setState({
+      candidates: issueSortedArray
+    });
+  }
+
+  componentDidUpdate() {
+    this.renderCandidateList();
+  }
+
+  render() {
+    const { loading, error, issues } = this.props;
+    const candidateList = this.renderCandidateList();
     if(loading) return <Loading />;
     else if(error) throw error;
     return (
       <>
-      <Sorting sortByIssue1={this.handleSortByIssue1} sortByIssue2={this.handleSortByIssue2} sortByIssue3={this.handleSortByIssue3} sortByIssue4={this.handleSortByIssue4} sortByIssue5={this.handleSortByIssue5} sortByTotalScore={this.sortByTotalScore} issue1={issues[0]} issue2={issues[1]} issue3={issues[2]} issue4={issues[3]} issue5={issues[4]} />
+      <p>Sort candidates by your top issues:</p>
+      <SortByIssueButtons issues={issues} sortByIssue={this.handleCandidateSortByIssue} />
+      <p>Sort candidates by total score:</p>
+      <button onClick={this.handleCandidateSortByTotal}>Total Score</button>
       <ul>
         {candidateList}
       </ul>

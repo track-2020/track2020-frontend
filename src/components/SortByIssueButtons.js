@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SortByIssueButton from './SortByIssueButton';
 
 function SortByIssueButtons({ issues, sortByIssue }) {
-  const buttonList = issues.map((issue, sortByIssue) => {
+  const buttonList = issues.map(issue => {
     return (
       <li key={issue.issueId}>
-        <SortByIssueButton sortByIssue={sortByIssue} issue={issue.issue} />
+        <button onClick={() => sortByIssue(issue.issueId)}>{issue.issue}</button>
       </li>
     );
   });
