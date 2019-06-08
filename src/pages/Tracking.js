@@ -1,20 +1,27 @@
 import React, { PureComponent } from 'react';
 import CandidateModal from '../components/modals/CandidateModal';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default class Tracking extends PureComponent {
-//   static propTypes = {
+  static propTypes = {
+    onClose: PropTypes.func.isRequired
+  }
 
-  //   }
 
     state = {
       show: false,
       score: 0
     }
 
+    handleModalClose() {
+      const { score } = this.state;
+      this.props.onClose(score);
+      this.setState({
+        score: 0
+      });
+    }
+
     showModal = () => {
-      console.log('this is doing something');
-      console.log(this.state.show);
       this.setState({
         show: true
       });
@@ -24,6 +31,7 @@ export default class Tracking extends PureComponent {
       this.setState({
         show: false
       });
+      this.handleModalClose();
     }
 
     handlePlusClick = () => {
@@ -45,7 +53,6 @@ export default class Tracking extends PureComponent {
                 <CandidateModal show={this.state.show} close={this.hideModal} plusClick={this.handlePlusClick}>
                   <p>Testing this thang</p>
                 </CandidateModal>
-                {/* <p onClick={this.hideModal}>Close Modal</p> */}
             </>
       );
     }
